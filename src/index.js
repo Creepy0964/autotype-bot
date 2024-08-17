@@ -5,7 +5,7 @@ const fs = require("fs");
 const data = fs.readFileSync("/app/src/data.json", "utf-8");
 const obj = JSON.parse(data);
 
-const banlist = ["7100235696"];
+const banlist = [7100235696];
 
 const utils = new Settings();
 
