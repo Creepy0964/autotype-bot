@@ -31,7 +31,7 @@ bot.on("message", (msg) => {
         .join(" ");
       try {
         bot.copyMessage(-1002218816805, msg.chat.id, msg.message_id, {
-          caption: `${msg.caption.replace(obj.table[i].typology, "").slice(0, -1)}\n${obj.table[i].typology}\n>${hashtags}\n\n@nasralishe\\_tipov\\_bot | @nasralishe\\_tipov`,
+          caption: `${msg.caption.replace(obj.table[i].typology, "").slice(0, -1)}\n${obj.table[i].typology}\n>${hashtags}\n\n@nasralishe\\_tipov\\_bot \\| @nasralishe\\_tipov`,
           parse_mode: "MarkdownV2",
         });
         bot.sendMessage(msg.chat.id, `Пост отправлен!`);
