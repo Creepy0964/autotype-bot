@@ -11,10 +11,20 @@ const bot = new TelegramBot(utils.token, { polling: true });
 
 bot.on("message", (msg) => {
   if (msg.chat.type != "private") return;
-  if (!msg.photo) bot.sendMessage(msg.chat.id, `Не прикреплена фотография!`);
-  if (!msg.caption) bot.sendMessage(msg.chat.id, `Нет текста сообщения!`);
+  if (!msg.photo) {
+    bot.sendMessage(msg.chat.id, `Не прикреплена фотография!`);
+    return;
+  }
+  if (!msg.caption) {
+    bot.sendMessage(msg.chat.id, `Нет текста сообщения!`);
+    return;
+  }
   for (let i = 0; i < obj.table.length; i++) {
     if (msg.caption.includes(obj.table[i].typology)) {
+      if (msg.caption == obj.table[i].typology) {
+        bot.sendMessage(msg.chat.id, `Нет имени персонажа!`);
+        return;
+      }
       hashtags = obj.table[i].typology
         .split(" ")
         .map((s) => "\\#" + s)
