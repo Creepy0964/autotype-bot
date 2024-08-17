@@ -2,7 +2,7 @@ const TelegramBot = require("node-telegram-bot-api");
 const { Settings } = require("./utils.js");
 const fs = require("fs");
 
-const data = fs.readFileSync("data.json", "utf-8");
+const data = fs.readFileSync("/app/src/data.json", "utf-8");
 const obj = JSON.parse(data);
 
 const utils = new Settings();
