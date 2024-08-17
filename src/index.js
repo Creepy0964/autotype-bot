@@ -12,8 +12,9 @@ const utils = new Settings();
 const bot = new TelegramBot(utils.token, { polling: true });
 
 bot.on("message", (msg) => {
+  console.log(`${msg.from.id}, ${msg.caption}`);
   if (msg.chat.type != "private") return;
-  if(banlist.includes(msg.from.id)) {
+  if (banlist.includes(msg.from.id)) {
     bot.sendMessage(msg.chat.id, `ИДИ НАХУЙ`);
     return;
   }
