@@ -5,12 +5,18 @@ const fs = require("fs");
 const data = fs.readFileSync("/app/src/data.json", "utf-8");
 const obj = JSON.parse(data);
 
+const banlist = ["7100235696"];
+
 const utils = new Settings();
 
 const bot = new TelegramBot(utils.token, { polling: true });
 
 bot.on("message", (msg) => {
   if (msg.chat.type != "private") return;
+  if(banlist.includes(msg.from.id)) {
+    bot.sendMessage(msg.chat.id, `ИДИ НАХУЙ`);
+    return;
+  }
   if (!msg.photo) {
     bot.sendMessage(msg.chat.id, `Не прикреплена фотография!`);
     return;
